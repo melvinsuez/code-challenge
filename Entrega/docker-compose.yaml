@@ -61,7 +61,7 @@ x-airflow-common:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
-    - ./data/postgres/:/opt/airflow/data/postgres/
+    - ./data:/opt/airflow/data/postgres/
   user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-50000}"
 
 services:
@@ -73,7 +73,7 @@ services:
       POSTGRES_PASSWORD: thewindisblowing
     volumes:
       - ./dbdata:/var/lib/postgresql/data
-      - ./data/northwind.sql:/docker-entrypoint-initdb.d/northwind.sql
+    #  - ./data/northwind.sql:/docker-entrypoint-initdb.d/northwind.sql
     ports:
       - 5432:5432
 
